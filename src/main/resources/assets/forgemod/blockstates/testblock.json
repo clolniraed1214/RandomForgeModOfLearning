@@ -1,0 +1,10 @@
+{
+    "variants": {
+        "normal": [
+            { "model": "block/testblock" },
+            { "model": "block/testblock" },
+            { "model": "block/testblock", "y": 180 },
+            { "model": "block/testblock", "y": 180 }
+        ]
+    }
+}
