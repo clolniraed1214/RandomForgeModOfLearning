@@ -1,7 +1,6 @@
 package com.creamyrootbeer.randomforgemod.proxy;
 
-import com.creamyrootbeer.randomforgemod.block.base.BlockBase;
-import com.creamyrootbeer.randomforgemod.init.ModBlocks;
+import com.creamyrootbeer.randomforgemod.init.ModRegistry;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -12,19 +11,17 @@ public class ClientProxy extends CommonProxy {
 	@Override
 	public void preInit(FMLPreInitializationEvent e) {
 		super.preInit(e);
-		for (BlockBase block : ModBlocks.getBlocks()) {
-			block.initModels();
-		}
+		ModRegistry.registerRenders();
 	}
 
 	@Override
 	public void init(FMLInitializationEvent e) {
-		
+		super.init(e);
 	}
 
 	@Override
 	public void postInit(FMLPostInitializationEvent e) {
-		
+		super.postInit(e);
 	}
 	
 	

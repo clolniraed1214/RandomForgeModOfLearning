@@ -1,10 +1,12 @@
 {
-    "variants": {
-        "normal": [
-            { "model": "block/testblock" },
-            { "model": "block/testblock" },
-            { "model": "block/testblock", "y": 180 },
-            { "model": "block/testblock", "y": 180 }
-        ]
-    }
+  "forge_marker": 1,
+  "defaults": {
+    "transform": "forge:default-block",
+    "custom": { "flip-v": true },
+    "model": "forgemod:testblock"
+  },
+  "variants": {
+    "normal": [{}],
+    "inventory": [{}]
+  }
 }

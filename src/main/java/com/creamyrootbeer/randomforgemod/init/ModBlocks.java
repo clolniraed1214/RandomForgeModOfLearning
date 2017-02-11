@@ -8,7 +8,7 @@ import com.creamyrootbeer.randomforgemod.block.base.BlockBase;
 public class ModBlocks {
 	private static final ArrayList<BlockBase> MOD_BLOCKS = new ArrayList<BlockBase>();
 	
-	public static final BlockBase testBlock = new TestBlock();
+	public static final BlockBase TEST_BLOCK = new TestBlock();
 	
 	public static void addBlock(BlockBase block) {		
 		MOD_BLOCKS.add(block);

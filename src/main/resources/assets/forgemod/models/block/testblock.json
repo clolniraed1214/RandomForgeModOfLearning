@@ -1,9 +1,9 @@
 {
 	"__comment": "Designed by Clolniraed1214 with Cubik Studio - https://cubik.studio",
 	"textures": {
-		"particle": "glass",
-		"texture": "bedrock",
-		"glass": "glass"
+		"particle": "blocks/glass",
+		"texture": "blocks/bedrock",
+		"glass": "blocks/glass"
 	},
 	"elements": [
 		{

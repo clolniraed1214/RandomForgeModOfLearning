@@ -2,18 +2,21 @@ package com.creamyrootbeer.randomforgemod.init;
 
 import java.util.ArrayList;
 
-import net.minecraft.item.Item;
+import com.creamyrootbeer.randomforgemod.item.TestItem;
+import com.creamyrootbeer.randomforgemod.item.base.ItemBase;
 
 public class ModItems {
 	
-	private static ArrayList<Item> items = new ArrayList<Item>();
+	private static final ArrayList<ItemBase> MOD_ITEMS = new ArrayList<ItemBase	>();
 	
-	public static void addItem(Item item) {
-		items.add(item);
+	public static final TestItem TEST_ITEM = new TestItem();
+	
+	public static void addItem(ItemBase item) {
+		MOD_ITEMS.add(item);
 	}
 	
-	public static ArrayList<Item> getItems() {
-		return items;
+	public static ArrayList<ItemBase> getItems() {
+		return MOD_ITEMS;
 	}
 	
 }
