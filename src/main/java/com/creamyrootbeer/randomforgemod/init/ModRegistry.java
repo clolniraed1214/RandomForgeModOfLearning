@@ -1,44 +1,26 @@
 package com.creamyrootbeer.randomforgemod.init;
 
-import com.creamyrootbeer.randomforgemod.block.base.BlockBase;
-import com.creamyrootbeer.randomforgemod.item.base.ItemBase;
+import com.creamyrootbeer.randomforgemod.item.base.BaseContent;
 
-import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
+@SuppressWarnings("rawtypes")
 public class ModRegistry {
 	public static void registerContent() {
-		registerItems();
-		registerBlocks();
-	}
-	
-	private static void registerItems() {
-		for (Item item : ModItems.getItems()) { 
-			GameRegistry.register(item);
-		}
-	}
-	
-	private static void registerBlocks() {
-		for (Block block : ModBlocks.getBlocks()) {
-			GameRegistry.register(block);
-			GameRegistry.register(new ItemBlock(block).setRegistryName(block.getUnlocalizedName()));
+		for (BaseContent object : ModContent.getContent()) { 
+			object.register();
 		}
 	}
 	
 	public static void registerRenders() {
-		for (BlockBase block : ModBlocks.getBlocks()) {
-			block.initModels();
-		}
-		for (ItemBase item : ModItems.getItems()) {
-			item.initTextures();
+		for (BaseContent object : ModContent.getContent()) {
+			object.initAssets();
 		}
 	}
 
 	public static void registerRecipes() {
-		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.TEST_BLOCK, 4), "OOO","OGO","OOO",'O',new ItemStack(Blocks.OBSIDIAN,1),'G',new ItemStack(Blocks.GLASS,1));
+		GameRegistry.addShapedRecipe(new ItemStack(ModContent.TEST_BLOCK.getItem(), 4), "OOO","OGO","OOO",'O',new ItemStack(Blocks.OBSIDIAN),'G', new ItemStack(Blocks.GLASS));
 	}
 }

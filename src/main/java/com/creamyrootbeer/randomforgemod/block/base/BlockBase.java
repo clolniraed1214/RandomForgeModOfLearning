@@ -1,7 +1,8 @@
 package com.creamyrootbeer.randomforgemod.block.base;
 
 import com.creamyrootbeer.randomforgemod.Constants;
-import com.creamyrootbeer.randomforgemod.init.ModBlocks;
+import com.creamyrootbeer.randomforgemod.init.ModContent;
+import com.creamyrootbeer.randomforgemod.item.base.BaseContent;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -10,12 +11,13 @@ import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockBase extends Block {
+public class BlockBase extends Block implements BaseContent<Block> {
 	
-	private final String NAME;
+	private final String BASE_NAME;
 	private BlockRenderLayer blockRender = BlockRenderLayer.SOLID;
 	private boolean opaque = true;
 	
@@ -27,18 +29,19 @@ public class BlockBase extends Block {
         super(material);
         setRegistryName(name);
         setUnlocalizedName(name);
-        NAME = name;
+        BASE_NAME = name;
         
-        ModBlocks.addBlock(this);
+        ModContent.addContent(this);
     }
 
     @Override
     public String getUnlocalizedName() {
-        return String.format("tile.%s:%s", Constants.MOD_ID, NAME);
+        return String.format("tile.%s:%s", Constants.MOD_ID, BASE_NAME);
     }
 	
 	@SideOnly(Side.CLIENT)
-	public void initModels() {
+	@Override
+	public void initAssets() {
 		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName().toString()));
 	}
 
@@ -60,5 +63,15 @@ public class BlockBase extends Block {
     public void setOpaqueCube(boolean opaque) {
     	this.opaque = opaque;
     }
+    
+    public Item getItem() {
+    	return Item.getItemFromBlock(this);
+    }
+	
+	@Override
+	public void register() {
+		GameRegistry.register(this);
+		GameRegistry.register(getItem());
+	}
 	
 }

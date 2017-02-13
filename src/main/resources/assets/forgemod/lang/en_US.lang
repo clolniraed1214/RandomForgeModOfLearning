@@ -3,3 +3,4 @@ tile.forgemod:testblock.name=Test Block!
 
 # Regular Items
 item.forgemod:test_item.name = Test Item! KYS!
+item.forgemod:test_food.name = Test Food! YAY!
