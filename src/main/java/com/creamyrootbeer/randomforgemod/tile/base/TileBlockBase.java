@@ -1,33 +1,37 @@
-package com.creamyrootbeer.randomforgemod.block.base;
+package com.creamyrootbeer.randomforgemod.tile.base;
 
 import com.creamyrootbeer.randomforgemod.Constants;
 import com.creamyrootbeer.randomforgemod.init.BaseContent;
 import com.creamyrootbeer.randomforgemod.init.ModContent;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public abstract class BlockBase extends Block implements BaseContent<Block> {
+public abstract class TileBlockBase extends BlockContainer implements ITileEntityProvider, BaseContent<Block> {
 	
-	private final String BASE_NAME;
+	public final String BASE_NAME;
 	private BlockRenderLayer blockRender = BlockRenderLayer.SOLID;
 	private boolean opaque = true;
 	
-	public BlockBase(String name) {
+	protected TileBlockBase(String name) {
 		this(name, Material.ROCK);
 	}
 	
-	public BlockBase(String name, Material material) {
-        super(material);
+	protected TileBlockBase(String name, Material material) {
+		super(Material.ROCK);
         setRegistryName(Constants.MOD_ID + ":" + name);
         setUnlocalizedName(name);
         BASE_NAME = name;
@@ -70,5 +74,8 @@ public abstract class BlockBase extends Block implements BaseContent<Block> {
 		GameRegistry.register(this);
 		GameRegistry.register(new ItemBlock(this), this.getRegistryName());
 	}
-	
+
+	@Override
+	public abstract TileEntity createNewTileEntity(World worldIn, int meta);
+
 }

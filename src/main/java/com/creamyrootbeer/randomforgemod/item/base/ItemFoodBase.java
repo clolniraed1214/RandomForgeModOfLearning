@@ -1,6 +1,7 @@
 package com.creamyrootbeer.randomforgemod.item.base;
 
 import com.creamyrootbeer.randomforgemod.Constants;
+import com.creamyrootbeer.randomforgemod.init.BaseContent;
 import com.creamyrootbeer.randomforgemod.init.ModContent;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -11,7 +12,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemFoodBase extends ItemFood implements BaseContent<Item> {
+public abstract class ItemFoodBase extends ItemFood implements BaseContent<Item> {
 
 	private final String BASE_NAME;
 	

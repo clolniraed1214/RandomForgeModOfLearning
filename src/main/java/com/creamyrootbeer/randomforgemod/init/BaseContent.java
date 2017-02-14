@@ -1,4 +1,4 @@
-package com.creamyrootbeer.randomforgemod.item.base;
+package com.creamyrootbeer.randomforgemod.init;
 
 import net.minecraftforge.fml.common.registry.IForgeRegistryEntry;
 

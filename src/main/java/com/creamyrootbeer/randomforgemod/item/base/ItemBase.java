@@ -1,6 +1,7 @@
 package com.creamyrootbeer.randomforgemod.item.base;
 
 import com.creamyrootbeer.randomforgemod.Constants;
+import com.creamyrootbeer.randomforgemod.init.BaseContent;
 import com.creamyrootbeer.randomforgemod.init.ModContent;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -10,14 +11,14 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemBase extends Item implements BaseContent<Item> {
+public abstract class ItemBase extends Item implements BaseContent<Item> {
 	
 	private final String BASE_NAME;
 	
 	public ItemBase(String name) {
 		super();
 		this.BASE_NAME = name;
-		setRegistryName(name);
+		setRegistryName(Constants.MOD_ID + ":" + name);
 		setUnlocalizedName(name);
 		
 		ModContent.addContent(this);

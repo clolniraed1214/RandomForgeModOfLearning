@@ -30,8 +30,7 @@ public class TestBlock extends BlockBase {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn,
 			EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
-		// this.lightningExplode(worldIn, pos, true);
-		
+		this.lightningExplode(worldIn, pos, true);
 		return true;
 	}
 	

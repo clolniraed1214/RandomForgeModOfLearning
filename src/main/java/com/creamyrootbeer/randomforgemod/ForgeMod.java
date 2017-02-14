@@ -12,6 +12,9 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 @Mod(modid=Constants.MOD_ID, version=Constants.VERSION, name=Constants.NAME)
 public class ForgeMod {
 	
+	@Mod.Instance
+	public static ForgeMod instance;
+	
 	@SidedProxy(clientSide=(Constants.PACKAGE + ".proxy.ClientProxy"), serverSide=(Constants.PACKAGE + ".proxy.ServerProxy"))
 	public static IProxy proxy;
 	
