@@ -1,11 +1,13 @@
 package com.creamyrootbeer.randomforgemod.tile.block;
 
+import com.creamyrootbeer.randomforgemod.Constants;
 import com.creamyrootbeer.randomforgemod.init.ModContent;
 import com.creamyrootbeer.randomforgemod.tile.base.TileBlockBase;
 import com.creamyrootbeer.randomforgemod.tile.entity.TileEntityCancerBlock;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.tileentity.TileEntity;
@@ -27,7 +29,8 @@ public class TileCancerBlock extends TileBlockBase {
 	};
 	
 	public TileCancerBlock() {
-		super("cancer_block", Material.WEB);
+		super(Constants.Names.TileEntities.CANCER_BLOCK, Material.WEB);
+		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 	}
 	
 	@Override
@@ -43,7 +46,7 @@ public class TileCancerBlock extends TileBlockBase {
 		return true;
 	}
 	
-	private void grow(BlockPos pos, World worldIn) {
+	public void grow(BlockPos pos, World worldIn) {
 		for (BlockPos posMod : BLOCK_POS_MODS) {
 			BlockPos newPos = pos.add(posMod);
 			if (!worldIn.getBlockState(newPos).equals(Blocks.AIR.getDefaultState())) {

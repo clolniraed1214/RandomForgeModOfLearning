@@ -16,7 +16,6 @@ public class CommonProxy implements IProxy {
 	@Override
 	public void init(FMLInitializationEvent e) {
 		ModRegistry.registerRecipes();
-		System.out.print("Just registered the recipes.");
 	}
 
 	@Override

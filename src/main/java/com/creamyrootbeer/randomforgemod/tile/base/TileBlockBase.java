@@ -43,6 +43,8 @@ public abstract class TileBlockBase extends BlockContainer implements ITileEntit
     public String getUnlocalizedName() {
         return String.format("tile.%s:%s", Constants.MOD_ID, BASE_NAME);
     }
+    
+    
 	
 	@SideOnly(Side.CLIENT)
 	@Override
