@@ -1,9 +1,9 @@
 {
 	"__comment": "Designed by Clolniraed1214 with Cubik Studio - https://cubik.studio",
 	"textures": {
-		"particle": "blocks/glass",
-		"texture": "blocks/bedrock",
-		"glass": "blocks/glass"
+		"particle": "forgemod:blocks/glass",
+		"texture": "forgemod:blocks/bedrock",
+		"glass": "forgemod:blocks/glass"
 	},
 	"elements": [
 		{

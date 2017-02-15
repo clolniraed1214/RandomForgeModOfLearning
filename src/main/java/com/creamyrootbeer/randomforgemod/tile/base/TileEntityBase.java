@@ -47,7 +47,6 @@ public abstract class TileEntityBase extends TileEntity implements BaseContent<T
     public void initAssets() {}
     @Override
     public String getUnlocalizedName() {return ID;}
-
 	@Override
 	public TileEntity setRegistryName(ResourceLocation name) {return this;}
 	@Override

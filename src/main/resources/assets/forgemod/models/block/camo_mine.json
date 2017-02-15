@@ -1,8 +1,8 @@
 {
 	"__comment": "Designed by Clolniraed1214 with Cubik Studio - https://cubik.studio",
 	"textures": {
-		"particle": "blocks/cancer_block",
-		"texture": "blocks/cancer_block"
+		"particle": "forgemod:blocks/cancer_block",
+		"texture": "forgemod:blocks/cancer_block"
 	},
 	"elements": [
 		{

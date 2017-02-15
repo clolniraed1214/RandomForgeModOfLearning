@@ -8,6 +8,7 @@ import com.creamyrootbeer.randomforgemod.item.food.TestFood;
 import com.creamyrootbeer.randomforgemod.tile.block.TileCamoMine;
 import com.creamyrootbeer.randomforgemod.tile.block.TileCancerBlock;
 import com.creamyrootbeer.randomforgemod.tile.entity.TileEntityCamoMine;
+import com.creamyrootbeer.randomforgemod.tile.entity.TileEntityCancerBlock;
 
 
 @SuppressWarnings("rawtypes")
@@ -26,6 +27,7 @@ public class ModContent {
 	
 	// THE TILE ENTITIES
 	public static final TileEntityCamoMine CAMO_MINE_TE = new TileEntityCamoMine();
+	public static final TileEntityCancerBlock CANCER_BLOCK_TE = new TileEntityCancerBlock();
 	
 	public static void addContent(BaseContent object) {
 		MOD_CONTENT.add(object);

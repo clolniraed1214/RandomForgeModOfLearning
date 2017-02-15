@@ -14,6 +14,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -24,7 +25,7 @@ public abstract class TileBlockBase extends BlockContainer implements ITileEntit
 	
 	public final String BASE_NAME;
 	private BlockRenderLayer blockRender = BlockRenderLayer.SOLID;
-	private boolean opaque = true;
+	private boolean opaque = false;
 	
 	protected TileBlockBase(String name) {
 		this(name, Material.ROCK);
@@ -43,8 +44,6 @@ public abstract class TileBlockBase extends BlockContainer implements ITileEntit
     public String getUnlocalizedName() {
         return String.format("tile.%s:%s", Constants.MOD_ID, BASE_NAME);
     }
-    
-    
 	
 	@SideOnly(Side.CLIENT)
 	@Override
@@ -55,7 +54,12 @@ public abstract class TileBlockBase extends BlockContainer implements ITileEntit
     @Override
     @SideOnly(Side.CLIENT)
     public BlockRenderLayer getBlockLayer() {
-        return blockRender;
+        return this.blockRender;
+    }
+    @Override
+    public EnumBlockRenderType getRenderType(IBlockState state) {
+    	// TODO Auto-generated method stub
+    	return EnumBlockRenderType.MODEL;
     }
     
     @Override
