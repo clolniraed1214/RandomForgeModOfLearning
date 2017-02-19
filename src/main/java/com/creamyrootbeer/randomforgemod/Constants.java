@@ -19,6 +19,7 @@ public class Constants {
 		}
 		
 		public static final class Blocks {
+			public static final String TEST_BLOCK = "test_block";
 		}
 	}
 	

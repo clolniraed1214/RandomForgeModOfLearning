@@ -1,9 +1,13 @@
 package com.creamyrootbeer.randomforgemod.tile.entity;
 
+import java.util.List;
+
 import com.creamyrootbeer.randomforgemod.Constants;
 import com.creamyrootbeer.randomforgemod.tile.base.TileEntityBase;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ITickable;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 
 public class TileEntityCamoMine extends TileEntityBase implements ITickable {
@@ -16,10 +20,17 @@ public class TileEntityCamoMine extends TileEntityBase implements ITickable {
 
 	@Override
 	public void update() {
-		timer--;
-		if (timer == 0 && !getWorld().isRemote) {
-			BlockPos pos = this.getPos();
-			getWorld().createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3.0F, true);
+		if (timer == 0) {
+			BlockPos pos1 = this.pos.add(-2, -2, -2);
+			BlockPos pos2 = this.pos.add(3, 3, 3);
+			List<EntityPlayer> entities = this.world.getEntitiesWithinAABB(EntityPlayer.class, new AxisAlignedBB(pos1, pos2));
+			if (entities.size() > 0) {
+				if (!this.world.isRemote) {
+					this.world.createExplosion(null, this.pos.getX(), this.pos.getY(), this.pos.getZ(), 8.0F, true);
+				}
+			}
+		} else {
+			this.timer--;
 		}
 	}
 

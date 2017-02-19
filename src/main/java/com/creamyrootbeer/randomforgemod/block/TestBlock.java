@@ -1,5 +1,6 @@
 package com.creamyrootbeer.randomforgemod.block;
 
+import com.creamyrootbeer.randomforgemod.Constants;
 import com.creamyrootbeer.randomforgemod.block.base.BlockBase;
 
 import net.minecraft.block.Block;
@@ -19,7 +20,7 @@ public class TestBlock extends BlockBase {
 	private static final int lightningCount = 100;
 
 	public TestBlock() {
-		super("testblock");
+		super(Constants.Names.Blocks.TEST_BLOCK);
 		this.setHardness(2.0F);
 		this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 		this.setLightOpacity(1);
