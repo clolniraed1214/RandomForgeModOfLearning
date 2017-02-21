@@ -10,12 +10,12 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.world.World;
 
 public class TestItem extends ItemBase {
-	
+
 	public TestItem() {
 		super("test_item");
 		this.setCreativeTab(CreativeTabs.MISC);
 	}
-	
+
 	@Override
 	public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
 		playerIn.setHealth(0.0F);

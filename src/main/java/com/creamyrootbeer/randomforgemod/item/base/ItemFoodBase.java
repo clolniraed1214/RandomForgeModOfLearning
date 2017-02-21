@@ -15,25 +15,25 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public abstract class ItemFoodBase extends ItemFood implements BaseContent<Item> {
 
 	private final String BASE_NAME;
-	
+
 	public ItemFoodBase(String name, int amount, float saturation, boolean isWolfFood) {
 		super(amount, saturation, isWolfFood);
 		this.BASE_NAME = name;
 		setRegistryName(name);
 		setUnlocalizedName(name);
-		
+
 		ModContent.addContent(this);
 	}
-	
+
 	public String getUnlocalizedName() {
 		return String.format("item.%s:%s", Constants.MOD_ID, BASE_NAME);
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public void initAssets() {
-        ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName().toString()));
+		ModelLoader.setCustomModelResourceLocation(this, 0, new ModelResourceLocation(getRegistryName().toString()));
 	}
-	
+
 	@Override
 	public void register() {
 		GameRegistry.register(this);

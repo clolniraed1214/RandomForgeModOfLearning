@@ -12,6 +12,7 @@ public class ClientProxy extends CommonProxy {
 	public void preInit(FMLPreInitializationEvent e) {
 		super.preInit(e);
 		ModRegistry.registerRenders();
+		ModRegistry.registerKeybindings();
 	}
 
 	@Override
@@ -23,7 +24,5 @@ public class ClientProxy extends CommonProxy {
 	public void postInit(FMLPostInitializationEvent e) {
 		super.postInit(e);
 	}
-	
-	
-	
+
 }

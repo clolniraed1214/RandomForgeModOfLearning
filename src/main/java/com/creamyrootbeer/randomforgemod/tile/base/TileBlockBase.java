@@ -22,59 +22,60 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public abstract class TileBlockBase extends BlockContainer implements ITileEntityProvider, BaseContent<Block> {
-	
+
 	public final String BASE_NAME;
 	private BlockRenderLayer blockRender = BlockRenderLayer.SOLID;
 	private boolean opaque = false;
-	
+
 	protected TileBlockBase(String name) {
 		this(name, Material.ROCK);
 	}
-	
+
 	protected TileBlockBase(String name, Material material) {
 		super(Material.ROCK);
-        setRegistryName(Constants.MOD_ID + ":" + name);
-        setUnlocalizedName(name);
-        BASE_NAME = name;
-        
-        ModContent.addContent(this);
-    }
+		setRegistryName(Constants.MOD_ID + ":" + name);
+		setUnlocalizedName(name);
+		BASE_NAME = name;
 
-    @Override
-    public String getUnlocalizedName() {
-        return String.format("tile.%s:%s", Constants.MOD_ID, BASE_NAME);
-    }
-	
+		ModContent.addContent(this);
+	}
+
+	@Override
+	public String getUnlocalizedName() {
+		return String.format("tile.%s:%s", Constants.MOD_ID, BASE_NAME);
+	}
+
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void initAssets() {
-		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0, new ModelResourceLocation(getRegistryName().toString()));
+		ModelLoader.setCustomModelResourceLocation(Item.getItemFromBlock(this), 0,
+				new ModelResourceLocation(getRegistryName().toString()));
 	}
 
-    @Override
-    @SideOnly(Side.CLIENT)
-    public BlockRenderLayer getBlockLayer() {
-        return this.blockRender;
-    }
-    @Override
-    public EnumBlockRenderType getRenderType(IBlockState state) {
-    	// TODO Auto-generated method stub
-    	return EnumBlockRenderType.MODEL;
-    }
-    
-    @Override
-    public boolean isOpaqueCube(IBlockState state) {
-    	return opaque;
-    }
-    
-    public void setBlockRenderLayer(BlockRenderLayer layer) {
-    	this.blockRender = layer;
-    }
-    
-    public void setOpaqueCube(boolean opaque) {
-    	this.opaque = opaque;
-    }
-	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public BlockRenderLayer getBlockLayer() {
+		return this.blockRender;
+	}
+
+	@Override
+	public EnumBlockRenderType getRenderType(IBlockState state) {
+		return EnumBlockRenderType.MODEL;
+	}
+
+	@Override
+	public boolean isOpaqueCube(IBlockState state) {
+		return opaque;
+	}
+
+	public void setBlockRenderLayer(BlockRenderLayer layer) {
+		this.blockRender = layer;
+	}
+
+	public void setOpaqueCube(boolean opaque) {
+		this.opaque = opaque;
+	}
+
 	@Override
 	public void register() {
 		GameRegistry.register(this);

@@ -15,105 +15,113 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public abstract class TileEntityBase extends TileEntity implements BaseContent<TileEntity> {
-	
+
 	protected String customName;
-    protected UUID owner;
-    public final String ID;
+	protected UUID owner;
+	public final String ID;
 
-    public TileEntityBase(String name) {
-        customName = "";
-        owner = null;
-        ID = name;
-        
-        ModContent.addContent(this);
-    }
+	public TileEntityBase(String name) {
+		customName = "";
+		owner = null;
+		ID = name;
 
-    public boolean hasCustomName() {
-        return customName != null && !customName.isEmpty();
-    }
+		ModContent.addContent(this);
+	}
 
-    @Nullable
-    public String getCustomName() {
-        return customName;
-    }
-    
-    @Override
-    public void register() {
-    	GameRegistry.registerTileEntity(this.getClass(), ID);
-    	System.out.println("Registering " + ID + ":" + this.getClass().getName());
-    }
-    
-    @Override
-    public void initAssets() {}
-    @Override
-    public String getUnlocalizedName() {return ID;}
+	public boolean hasCustomName() {
+		return customName != null && !customName.isEmpty();
+	}
+
+	@Nullable
+	public String getCustomName() {
+		return customName;
+	}
+
 	@Override
-	public TileEntity setRegistryName(ResourceLocation name) {return this;}
+	public void register() {
+		GameRegistry.registerTileEntity(this.getClass(), ID);
+		System.out.println("Registering " + ID + ":" + this.getClass().getName());
+	}
+
 	@Override
-	public ResourceLocation getRegistryName() {return null;}
+	public void initAssets() {
+	}
+
+	@Override
+	public String getUnlocalizedName() {
+		return ID;
+	}
+
+	@Override
+	public TileEntity setRegistryName(ResourceLocation name) {
+		return this;
+	}
+
+	@Override
+	public ResourceLocation getRegistryName() {
+		return null;
+	}
 
 	@Override
 	public Class<? super TileEntity> getRegistryType() {
 		return null;
 	}
-    
-    
-    public void setCustomName(String customName) {
-        this.customName = customName;
-    }
 
-    public boolean hasOwner() {
-        return owner != null;
-    }
+	public void setCustomName(String customName) {
+		this.customName = customName;
+	}
 
-    @Nullable
-    public UUID getOwner() {
-        return owner;
-    }
+	public boolean hasOwner() {
+		return owner != null;
+	}
 
-    public void setOwner(UUID owner) {
-        this.owner = owner;
-    }
+	@Nullable
+	public UUID getOwner() {
+		return owner;
+	}
 
-    public void setOwner(EntityPlayer entityPlayer) {
-        if (entityPlayer != null) {
-            setOwner(entityPlayer.getUniqueID());
-        }
-    }
+	public void setOwner(UUID owner) {
+		this.owner = owner;
+	}
 
-    public boolean canInteractWith(EntityPlayer playerIn) {
-        return !isInvalid() && playerIn.getDistanceSq(pos.add(0.5D, 0.5D, 0.5D)) <= 64D;
-    }
+	public void setOwner(EntityPlayer entityPlayer) {
+		if (entityPlayer != null) {
+			setOwner(entityPlayer.getUniqueID());
+		}
+	}
 
-    @Override
-    public void readFromNBT(NBTTagCompound nbtTagCompound) {
+	public boolean canInteractWith(EntityPlayer playerIn) {
+		return !isInvalid() && playerIn.getDistanceSq(pos.add(0.5D, 0.5D, 0.5D)) <= 64D;
+	}
 
-        super.readFromNBT(nbtTagCompound);
+	@Override
+	public void readFromNBT(NBTTagCompound nbtTagCompound) {
 
-        if (nbtTagCompound.hasKey(Constants.Names.NBT.CUSTOM_NAME)) {
-            this.customName = nbtTagCompound.getString(Constants.Names.NBT.CUSTOM_NAME);
-        }
+		super.readFromNBT(nbtTagCompound);
 
-        if (nbtTagCompound.hasUniqueId(Constants.Names.NBT.OWNER)) {
-            this.owner = nbtTagCompound.getUniqueId(Constants.Names.NBT.OWNER);
-        }
-    }
+		if (nbtTagCompound.hasKey(Constants.Names.NBT.CUSTOM_NAME)) {
+			this.customName = nbtTagCompound.getString(Constants.Names.NBT.CUSTOM_NAME);
+		}
 
-    @Override
-    public NBTTagCompound writeToNBT(NBTTagCompound nbtTagCompound) {
-    	
-    	
-        super.writeToNBT(nbtTagCompound);
+		if (nbtTagCompound.hasUniqueId(Constants.Names.NBT.OWNER)) {
+			this.owner = nbtTagCompound.getUniqueId(Constants.Names.NBT.OWNER);
+		}
+	}
 
-        if (this.hasCustomName()) {
-            nbtTagCompound.setString(Constants.Names.NBT.CUSTOM_NAME, customName);
-        }
+	@Override
+	public NBTTagCompound writeToNBT(NBTTagCompound nbtTagCompound) {
 
-        if (this.hasOwner()) {
-            nbtTagCompound.setUniqueId(Constants.Names.NBT.OWNER, owner);
-        }
+		super.writeToNBT(nbtTagCompound);
 
-        return nbtTagCompound;
-    }
-	
+		if (this.hasCustomName()) {
+			nbtTagCompound.setString(Constants.Names.NBT.CUSTOM_NAME, customName);
+		}
+
+		if (this.hasOwner()) {
+			nbtTagCompound.setUniqueId(Constants.Names.NBT.OWNER, owner);
+		}
+
+		return nbtTagCompound;
+	}
+
 }

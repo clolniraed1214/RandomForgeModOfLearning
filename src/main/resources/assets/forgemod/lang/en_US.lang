@@ -4,5 +4,9 @@ tile.forgemod:camo_mine.name=Camo Mine
 tile.forgemod:cancer_block.name=Cancer
 
 # Regular Items
-item.forgemod:test_item.name = Test Item! KYS!
-item.forgemod:test_food.name = Test Food! YAY!
+item.forgemod:test_item.name=Test Item! KYS!
+item.forgemod:test_food.name=Test Food! YAY!
+
+#KeyBindings
+key.categories.forgemod=Forge Mod
+key.forgemod.explode=Explode

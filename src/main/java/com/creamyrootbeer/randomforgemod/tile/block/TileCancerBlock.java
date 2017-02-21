@@ -11,12 +11,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 
 public class TileCancerBlock extends TileBlockBase {
-	
+
 	public TileCancerBlock() {
 		super(Constants.Names.TileEntities.CANCER_BLOCK, Material.WEB);
 		setCreativeTab(CreativeTabs.BUILDING_BLOCKS);
 	}
-	
+
 	@Override
 	public void register() {
 		super.register();
